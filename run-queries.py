@@ -5,7 +5,7 @@ import dateutil
 import datetime
 import requests
 import json
-import config
+from config import *
 import sys
 import mysql.connector
 import pprint
