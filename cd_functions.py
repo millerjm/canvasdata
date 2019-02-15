@@ -19,6 +19,9 @@ from os import walk
 import pytz
 from config import *
 
+def get_timestamp()
+    data_timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+    return data_timestamp
 
 def try_db(config):
     try:
@@ -35,7 +38,7 @@ def try_db(config):
         cnx.close()
 
 def utcnow_tz():  
-    return datetime.datetime.now(tz=pytz.utc)
+    return datetime.now(tz=pytz.utc)
 
 def generate_dir_list(source_folder):
     dir_list = os.listdir(source_folder)
@@ -143,7 +146,7 @@ def insert_account_dim_temp(db_config, csv_path_name, table_part):
     cnx.close()	
 
 def insert_account_dim(db_config, table_part):
-    data_timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+    date_timestamp = get_timestamp()
     cnx = mysql.connector.connect(**db_config)
     query1 = "INSERT INTO " + table_part + "(SELECT "
     query2 = "id, canvas_id, name, depth, workflow_state, parent_account, parent_account_id, grandparent_account, grandparent_account_id, root_account, root_account_id, subaccount1, subaccount1_id, subaccount2, subaccount2_id, subaccount3, subaccount3_id, subaccount4, subaccount4_id, subaccount5, subaccount5_id, subaccount6, subaccount6_id, subaccount7, subaccount7_id, subaccount8, subaccount8_id, subaccount9, subaccount9_id, subaccount10, subaccount10_id, subaccount11, subaccount11_id, subaccount12, subaccount12_id, subaccount13, subaccount13_id, subaccount14, subaccount14_id, subaccount15, subaccount15_id, sis_source_id, '" + str(data_timestamp) + "' from temp_account_dim t ) "
