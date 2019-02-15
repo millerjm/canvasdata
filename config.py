@@ -3,9 +3,8 @@
 import time
 import dateutil
 import datetime
-from dateutil import parser
-from datetime import tzinfo
-from datetime import datetime
+from datetime import tzinfo, datetime, timedelta
+
 
 
 #mysql db setup
