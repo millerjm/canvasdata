@@ -1,0 +1,830 @@
+CREATE TABLE `temp_account_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `depth` int(10) unsigned DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_account` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_account_id` bigint(20) DEFAULT NULL,
+  `grandparent_account` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grandparent_account_id` bigint(20) DEFAULT NULL,
+  `root_account` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `subaccount1` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount1_id` bigint(20) DEFAULT NULL,
+  `subaccount2` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount2_id` bigint(20) DEFAULT NULL,
+  `subaccount3` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount3_id` bigint(20) DEFAULT NULL,
+  `subaccount4` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount4_id` bigint(20) DEFAULT NULL,
+  `subaccount5` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount5_id` bigint(20) DEFAULT NULL,
+  `subaccount6` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount6_id` bigint(20) DEFAULT NULL,
+  `subaccount7` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount7_id` bigint(20) DEFAULT NULL,
+  `subaccount8` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount8_id` bigint(20) DEFAULT NULL,
+  `subaccount9` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount9_id` bigint(20) DEFAULT NULL,
+  `subaccount10` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount10_id` bigint(20) DEFAULT NULL,
+  `subaccount11` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount11_id` bigint(20) DEFAULT NULL,
+  `subaccount12` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount12_id` bigint(20) DEFAULT NULL,
+  `subaccount13` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount13_id` bigint(20) DEFAULT NULL,
+  `subaccount14` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount14_id` bigint(20) DEFAULT NULL,
+  `subaccount15` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subaccount15_id` bigint(20) DEFAULT NULL,
+  `sis_source_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_assignment_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `title` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `due_at` datetime DEFAULT NULL,
+  `unlock_at` datetime DEFAULT NULL,
+  `lock_at` datetime DEFAULT NULL,
+  `points_possible` double DEFAULT NULL,
+  `grading_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `submission_types` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `peer_review_count` int(10) unsigned DEFAULT NULL,
+  `peer_reviews_due_at` datetime DEFAULT NULL,
+  `peer_reviews_assigned` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `peer_reviews` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `automatic_peer_reviews` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `all_day` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `all_day_date` date DEFAULT NULL,
+  `could_be_locked` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grade_group_students_individually` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `anonymous_peer_reviews` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `muted` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `position` bigint(20) DEFAULT NULL,
+  `visibility` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_assignment_fact` (
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `points_possible` double DEFAULT NULL,
+  `peer_review_count` int(10) unsigned DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `external_tool_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_assignment_group_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `default_assignment_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_group_fact` (
+  `assignment_group_id` bigint(20) NOT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `group_weight` double DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`assignment_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_group_rule_dim` (
+  `assignment_group_id` bigint(20) NOT NULL,
+  `drop_lowest` int(10) unsigned DEFAULT NULL,
+  `drop_highest` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`assignment_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_group_score_dim` (
+  `score_id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` double DEFAULT NULL,
+  `enrollment_id` bigint(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `workflow_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`score_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_group_score_fact` (
+  `score_id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` double DEFAULT NULL,
+  `enrollment_id` bigint(20) DEFAULT NULL,
+  `current_score` double DEFAULT NULL,
+  `final_score` double DEFAULT NULL,
+  `muted_current_score` double DEFAULT NULL,
+  `muted_final_score` double DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`score_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_override_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `course_section_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `all_day` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `all_day_date` date DEFAULT NULL,
+  `assignment_version` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `due_at` datetime DEFAULT NULL,
+  `due_at_overridden` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lock_at` datetime DEFAULT NULL,
+  `lock_at_overridden` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `set_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `unlock_at` datetime DEFAULT NULL,
+  `unlock_at_overridden` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `quiz_version` int(11) DEFAULT NULL,
+  `workflow_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_override_fact` (
+  `assignment_override_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `course_section_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `group_parent_account_id` bigint(20) DEFAULT NULL,
+  `nonxlist_course_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `group_wiki_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_override_user_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `assignment_override_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_override_user_fact` (
+  `assignment_override_user_id` bigint(20) NOT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `assignment_override_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`assignment_override_user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_override_user_rollup_fact` (
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `assignment_override_id` bigint(20) NOT NULL,
+  `assignment_override_user_adhoc_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) NOT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `course_section_id` bigint(20) DEFAULT NULL,
+  `enrollment_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `group_parent_account_id` bigint(20) DEFAULT NULL,
+  `group_wiki_id` bigint(20) DEFAULT NULL,
+  `nonxlist_course_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`assignment_override_id`,`user_id`,`course_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_assignment_rule_dim` (
+  `assignment_id` bigint(20) NOT NULL,
+  `drop_rule` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`assignment_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_conversation_dim` (
+  `id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `has_attachments` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `has_media_objects` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_conversation_message_dim` (
+  `id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `conversation_id` bigint(20) DEFAULT NULL,
+  `author_id` bigint(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `generated` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `has_attachments` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `has_media_objects` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_conversation_message_participant_fact` (
+  `conversation_message_id` bigint(20) DEFAULT NULL,
+  `conversation_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `enrollment_rollup_id` bigint(20) DEFAULT NULL,
+  `message_size_bytes` int(10) unsigned DEFAULT NULL,
+  `message_character_count` int(10) unsigned DEFAULT NULL,
+  `message_word_count` int(10) unsigned DEFAULT NULL,
+  `message_line_count` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_course_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `code` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `start_at` datetime DEFAULT NULL,
+  `conclude_at` datetime DEFAULT NULL,
+  `publicly_visible` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sis_source_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `syllabus_body` longtext COLLATE utf8mb4_unicode_ci,
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_course_score_dim` (
+  `score_id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `enrollment_id` bigint(20) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `workflow_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_course_score_fact` (
+  `score_id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_id` bigint(20) DEFAULT NULL,
+  `current_score` double DEFAULT NULL,
+  `final_score` double DEFAULT NULL,
+  `muted_current_score` double DEFAULT NULL,
+  `muted_final_score` double DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_course_section_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `default_section` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `accepting_enrollments` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `can_manually_enroll` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_at` datetime DEFAULT NULL,
+  `end_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `restrict_enrollments_to_section_dates` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nonxlist_course_id` bigint(20) DEFAULT NULL,
+  `sis_source_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_discussion_entry_dim` (
+  `id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `message` longtext COLLATE utf8mb4_unicode_ci,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `depth` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_discussion_entry_fact` (
+  `discussion_entry_id` bigint(20) DEFAULT NULL,
+  `parent_discussion_entry_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `topic_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `topic_user_id` bigint(20) DEFAULT NULL,
+  `topic_assignment_id` bigint(20) DEFAULT NULL,
+  `topic_editor_id` bigint(20) DEFAULT NULL,
+  `enrollment_rollup_id` bigint(20) DEFAULT NULL,
+  `message_length` int(10) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_discussion_topic_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `title` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` longtext COLLATE utf8mb4_unicode_ci,
+  `type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_reply_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `delayed_post_at` datetime DEFAULT NULL,
+  `posted_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `discussion_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pinned` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locked` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_discussion_topic_fact` (
+  `discussion_topic_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `editor_id` bigint(20) DEFAULT NULL,
+  `enrollment_rollup_id` bigint(20) DEFAULT NULL,
+  `message_length` bigint(20) unsigned DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `group_parent_course_id` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_enrollment_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `course_section_id` bigint(20) DEFAULT NULL,
+  `role_id` bigint(20) DEFAULT NULL,
+  `type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `start_at` datetime DEFAULT NULL,
+  `end_at` datetime DEFAULT NULL,
+  `completed_at` datetime DEFAULT NULL,
+  `self_enrolled` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sis_source_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `last_activity_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_enrollment_fact` (
+  `enrollment_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `course_section_id` bigint(20) DEFAULT NULL,
+  `computed_final_score` double DEFAULT NULL,
+  `computed_current_score` double DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_enrollment_rollup_dim` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_count` int(10) unsigned DEFAULT NULL,
+  `role_count` int(10) unsigned DEFAULT NULL,
+  `base_role_count` int(10) unsigned DEFAULT NULL,
+  `account_admin_role_count` int(10) unsigned DEFAULT NULL,
+  `teacher_enrollment_role_count` int(10) unsigned DEFAULT NULL,
+  `designer_enrollment_role_count` int(10) unsigned DEFAULT NULL,
+  `ta_enrollment_role_count` int(10) unsigned DEFAULT NULL,
+  `student_enrollment_role_count` int(10) unsigned DEFAULT NULL,
+  `observer_enrollment_role_count` int(10) unsigned DEFAULT NULL,
+  `account_membership_role_count` int(10) unsigned DEFAULT NULL,
+  `no_permissions_role_count` int(10) unsigned DEFAULT NULL,
+  `account_admin_enrollment_id` bigint(20) DEFAULT NULL,
+  `teacher_enrollment_enrollment_id` bigint(20) DEFAULT NULL,
+  `designer_enrollment_enrollment_id` bigint(20) DEFAULT NULL,
+  `ta_enrollment_enrollment_id` bigint(20) DEFAULT NULL,
+  `student_enrollment_enrollment_id` bigint(20) DEFAULT NULL,
+  `observer_enrollment_enrollment_id` bigint(20) DEFAULT NULL,
+  `account_membership_enrollment_id` bigint(20) DEFAULT NULL,
+  `no_permissions_enrollment_id` bigint(20) DEFAULT NULL,
+  `most_privileged_role` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `least_privileged_role` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_enrollment_term_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_start` datetime DEFAULT NULL,
+  `date_end` datetime DEFAULT NULL,
+  `sis_source_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_external_tool_activation_dim` (
+  `id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `activation_target_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(4096) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `privacy_level` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `tool_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `selectable_all` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_external_tool_activation_fact` (
+  `external_tool_activation_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_group_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `is_public` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `context_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category` longtext COLLATE utf8mb4_unicode_ci,
+  `join_level` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `default_view` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sis_source_id` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_group_fact` (
+  `group_id` bigint(20) DEFAULT NULL,
+  `parent_course_id` bigint(20) DEFAULT NULL,
+  `parent_account_id` bigint(20) DEFAULT NULL,
+  `parent_course_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `max_membership` int(10) unsigned DEFAULT NULL,
+  `storage_quota` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_group_membership_dim` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `canvas_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `moderator` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_group_membership_fact` (
+  `group_id` bigint(20) DEFAULT NULL,
+  `parent_course_id` bigint(20) DEFAULT NULL,
+  `parent_account_id` bigint(20) DEFAULT NULL,
+  `parent_course_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `group_membership_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_pseudonym_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_request_at` datetime DEFAULT NULL,
+  `last_login_at` datetime DEFAULT NULL,
+  `current_login_at` datetime DEFAULT NULL,
+  `last_login_ip` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_login_ip` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `password_auto_generated` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `sis_user_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `unique_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `integration_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authentication_provider_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_pseudonym_fact` (
+  `pseudonym_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `login_count` int(10) unsigned DEFAULT NULL,
+  `failed_login_count` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_quiz_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `points_possible` double DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `quiz_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scoring_policy` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `anonymous_submissions` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_questions` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer_display_order` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `go_back_to_previous_question` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `could_be_locked` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `browser_lockdown` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `browser_lockdown_for_displaying_results` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `browser_lockdown_monitor` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ip_filter` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_results` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_correct_answers` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_correct_answers_at` datetime DEFAULT NULL,
+  `hide_correct_answers_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `unlock_at` datetime DEFAULT NULL,
+  `lock_at` datetime DEFAULT NULL,
+  `due_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_quiz_fact` (
+  `quiz_id` bigint(20) NOT NULL,
+  `points_possible` double DEFAULT NULL,
+  `time_limit` int(10) unsigned DEFAULT NULL,
+  `allowed_attempts` int(10) unsigned DEFAULT NULL,
+  `unpublished_question_count` int(10) unsigned DEFAULT NULL,
+  `question_count` int(10) unsigned DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_role_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `base_role_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_submission_comment_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `submission_id` bigint(20) DEFAULT NULL,
+  `recipient_id` bigint(20) DEFAULT NULL,
+  `author_id` bigint(20) DEFAULT NULL,
+  `assessment_request_id` bigint(20) DEFAULT NULL,
+  `group_comment_id` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comment` longtext COLLATE utf8mb4_unicode_ci,
+  `author_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `anonymous` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `teacher_only_comment` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hidden` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_submission_comment_fact` (
+  `submission_comment_id` bigint(20) NOT NULL,
+  `submission_id` bigint(20) DEFAULT NULL,
+  `recipient_id` bigint(20) DEFAULT NULL,
+  `author_id` bigint(20) DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `message_size_bytes` int(10) unsigned DEFAULT NULL,
+  `message_character_count` int(10) unsigned DEFAULT NULL,
+  `message_word_count` int(10) unsigned DEFAULT NULL,
+  `message_line_count` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_submission_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci,
+  `url` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grade` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `submitted_at` datetime DEFAULT NULL,
+  `submission_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `processed` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `process_attempts` int(10) unsigned DEFAULT NULL,
+  `grade_matches_current_submission` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `published_grade` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `graded_at` datetime DEFAULT NULL,
+  `has_rubric_assessment` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attempt` int(10) unsigned DEFAULT NULL,
+  `has_admin_comment` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `excused` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `graded_anonymously` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `grader_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `quiz_submission_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `grade_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_submission_fact` (
+  `submission_id` bigint(20) NOT NULL,
+  `assignment_id` bigint(20) DEFAULT NULL,
+  `course_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `grader_id` bigint(20) DEFAULT NULL,
+  `course_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_rollup_id` bigint(20) DEFAULT NULL,
+  `score` double DEFAULT NULL,
+  `published_score` double DEFAULT NULL,
+  `what_if_score` double DEFAULT NULL,
+  `submission_comments_count` int(10) unsigned DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `assignment_group_id` bigint(20) DEFAULT NULL,
+  `group_id` bigint(20) DEFAULT NULL,
+  `quiz_id` bigint(20) DEFAULT NULL,
+  `quiz_submission_id` bigint(20) DEFAULT NULL,
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `temp_user_dim` (
+  `id` bigint(20) DEFAULT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time_zone` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `visibility` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `school_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `school_position` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locale` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `public` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `birthdate` datetime DEFAULT NULL,
+  `country_code` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sortable_name` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `global_canvas_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_wiki_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `parent_type` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` longtext COLLATE utf8mb4_unicode_ci,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `front_page_url` longtext COLLATE utf8mb4_unicode_ci,
+  `has_no_front_page` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_wiki_fact` (
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `parent_course_id` bigint(20) DEFAULT NULL,
+  `parent_group_id` bigint(20) DEFAULT NULL,
+  `parent_course_account_id` bigint(20) DEFAULT NULL,
+  `parent_group_account_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_wiki_page_dim` (
+  `id` bigint(20) NOT NULL,
+  `canvas_id` bigint(20) DEFAULT NULL,
+  `title` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci,
+  `workflow_state` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `url` longtext COLLATE utf8mb4_unicode_ci,
+  `protected_editing` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `editing_roles` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `revised_at` datetime DEFAULT NULL,
+  `could_be_locked` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+CREATE TABLE `temp_wiki_page_fact` (
+  `wiki_page_id` bigint(20) DEFAULT NULL,
+  `wiki_id` bigint(20) DEFAULT NULL,
+  `parent_course_id` bigint(20) DEFAULT NULL,
+  `parent_group_id` bigint(20) DEFAULT NULL,
+  `parent_course_account_id` bigint(20) DEFAULT NULL,
+  `parent_group_account_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `account_id` bigint(20) DEFAULT NULL,
+  `root_account_id` bigint(20) DEFAULT NULL,
+  `enrollment_term_id` bigint(20) DEFAULT NULL,
+  `group_category_id` bigint(20) DEFAULT NULL,
+  `wiki_page_comments_count` int(10) unsigned DEFAULT NULL,
+  `view_count` int(10) unsigned DEFAULT NULL,
+  `data_timestamp` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
