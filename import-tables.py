@@ -56,7 +56,7 @@ def main():
         for p in process_list:
             if p == d:  
                 #print(d)
-                directory_start_time = datetime.datetime.now()
+                directory_start_time = datetime.now()
                 print("Start Time for Import of " + d + ": " + directory_start_time.strftime(dt_format))
                 target_folder = source_folder + "/" + d
                 print(target_folder)
