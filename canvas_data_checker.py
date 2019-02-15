@@ -45,7 +45,7 @@ def get_auth(api_path):
     sig = sig.decode('utf-8')
     return sig        
   
-  def get_headers(api_path):
+def get_headers(api_path):
     sig = get_auth(api_path)
     headers = {}
     headers['Authorization'] = 'HMACAuth {}:{}'.format(apiKey,sig)
