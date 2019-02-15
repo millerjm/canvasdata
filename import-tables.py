@@ -47,7 +47,7 @@ else:
     exit()
     
 def main():
-    start_time = datetime.datetime.now()
+    start_time = datetime.now()
     try_db(canvasdata_config)
     print(source_folder)
     dir_list = generate_dir_list(source_folder)
