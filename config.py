@@ -5,7 +5,7 @@ import dateutil
 import datetime
 from datetime import tzinfo, datetime, timedelta
 
-
+install_location = 'FULL PATH'
 
 #mysql db setup
 canvasdata_config = {
@@ -15,6 +15,18 @@ canvasdata_config = {
     'database': 'DATABASE_NAME',
 }
 
+
+#source folder for all of the gz files
+source_folder ="/usr/local/mounts/canvasgz"
+
+#source folder for all of the gz files
+log_dir = install_location + "/logs"
+
+#location of bash script command to update all data
+update_script = "bash " + install_location + "/canvasdata.sh"
+
+#text files to keep track of what's been imported
+dumplog_file = install_location + '/dumps'
 
 apiKey = u'CANVAS_DATA_API_KEY'
 apiSecret = u'CANVAS_DATA_API_SECRET'
@@ -29,7 +41,6 @@ latest_api_path = u'/api/account/self/file/latest'
 dumplist_api_path = u'/api/account/self/dump'
 bydump_api_path = u'/api/account/self/file/byDump'
 bytable_api_path = u'/api/account/self/file/byTable'
-dumplog_file = '/usr/local/canvasdata/dumps'
 
 #setup to configure date and diff options
 today = datetime.today()
@@ -41,12 +52,6 @@ today_string = today.strftime(d_format)
 yesterday_string = yesterday.strftime(d_format)
 last_week_string = last_week.strftime(d_format)
 all_time_string = '2014-01-01 00:00:00'
-
-#source folder for all of the gz files
-source_folder ="/usr/local/mounts/gz"
-
-#location of bash script command to update all data
-update_script = "bash /usr/local/canvasdata/canvasdata.sh"
 
 #another way to limit what's imported...
 process_list = ['account_dim', 'assignment_dim', 'assignment_fact', 'conversation_dim', 'conversation_message_dim', 'conversation_message_participant_fact', 'course_dim', 'course_score_dim', 'course_score_fact', 'course_section_dim', 'discussion_entry_dim', 'discussion_entry_fact', 'discussion_topic_dim', 'discussion_topic_fact', 'enrollment_dim', 'enrollment_fact', 'enrollment_rollup_dim', 'enrollment_term_dim', 'external_tool_activation_dim', 'external_tool_activation_fact', 'group_dim', 'group_fact', 'group_membership_dim', 'group_membership_fact', 'pseudonym_dim', 'pseudonym_fact', 'quiz_dim', 'quiz_fact', 'role_dim', 'submission_comment_dim ', 'submission_comment_fact', 'submission_fact', 'submission_dim', 'user_dim', 'wiki_dim', 'wiki_fact', 'wiki_page_dim', 'wiki_page_fact']
