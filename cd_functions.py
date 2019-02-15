@@ -19,7 +19,7 @@ from os import walk
 import pytz
 from config import *
 
-def get_timestamp()
+def get_timestamp():
     data_timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     return data_timestamp
 
