@@ -5,6 +5,8 @@ import dateutil
 import datetime
 from dateutil import parser
 from datetime import tzinfo
+from datetime import datetime
+
 
 #mysql db setup
 canvasdata_config = {
@@ -31,7 +33,7 @@ bytable_api_path = u'/api/account/self/file/byTable'
 dumplog_file = '/usr/local/canvasdata/dumps'
 
 #setup to configure date and diff options
-today = datetime.datetime.today()
+today = datetime.today()
 d_format = '%Y-%m-%d'
 dt_format = ('%Y-%m-%d %H:%M:%S')
 yesterday= today - datetime.timedelta(days=2)
