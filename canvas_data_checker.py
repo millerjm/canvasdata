@@ -100,7 +100,7 @@ def parse_dump_info(response):
         user_dim = artifacts['user_dim']
     except:
         daily is False
-    finally:
+    else:
         daily is True
         print("Daily: " + str(daily))
             #print(user_dim)
@@ -119,7 +119,7 @@ def parse_dump_info(response):
         requests = artifacts['requests']
     except:
         historical is False
-    finally:
+    else:
             #print(requests)
         files = requests['files']
             #for f in files:
