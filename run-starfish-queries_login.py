@@ -128,7 +128,6 @@ def execute_query(db_config, query, data_tuple):
 
 def main():  
     data_timestamp=datetime.datetime.utcnow()
-    cnx = mysql.connector.connect(**canvasdata_config)
     #all of our sis section id's start with the PeopleSoft Term ID (STRM).  
     strm_list = ['2191', '2187']
     for strm in strm_list:  
